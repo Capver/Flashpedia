@@ -56,4 +56,4 @@ flask run
 5. **Access the web app:**
 Open your browser and navigate to http://127.0.0.1:5000/
 
-Developed as the final project for Harvard's CS50x.
+_Developed as the final project for Harvard's CS50x._
