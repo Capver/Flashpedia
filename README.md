@@ -36,8 +36,8 @@ The core utility of the application. Users select a specific course/lecture node
 To run this project on your local machine, follow these steps:
 
 1. **Clone the repository:**
-git clone [https://github.com/Capver/Flashpedia.git](https://github.com/Capver/Flashpedia.git)
-cd Flashpedia
+```git clone [https://github.com/Capver/Flashpedia.git](https://github.com/Capver/Flashpedia.git)
+cd Flashpedia```
 2. **Set up a virtual environment:**
 python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate
