@@ -1,6 +1,6 @@
 # Flashpedia
 
-> **Note on Development:** This project was developed entirely from scratch without the use of AI coding assistants (LLMs). It serves as a foundational demonstration of my understanding of core programming syntax, relational databases, state management, and web architecture.
+> **Note on Development:** This project was developed entirely by myself and not by AI coding assistants (LLMs). It serves as a foundational demonstration of my understanding of core programming syntax, relational databases, state management, and web architecture.
 
 #### Video Demo: [Watch on YouTube](https://youtu.be/yNDL3Ts6V1w)
 
