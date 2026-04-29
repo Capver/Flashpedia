@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    View
+{% endblock %}
+
+{% block main %}
+<!-- Alert for the delete and modify actions-->
+<div id="alert-placeholder"></div>
+
+<div class="form-heading">
+  <h1>View Flashcards</h1>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+<!-- Form element for the filter options -->
+      <form method="GET" action="/view" class="mb-4">
+        <div class="form-group">
+          <label for="course">Course:</label>
+          <select class="form-control" id="course" name="course">
+            <option value="">All</option>
+            <!-- Loop to get all courses -->
+            {% for course in courses %}
+            <option value="{{ course[0] }}">{{ course[0] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="lecture">Lecture:</label>
+          <select class="form-control" id="lecture" name="lecture">
+            <option value="">All</option>
+            <!-- Loop to get all lectures -->
+            {% for lecture in lectures %}
+            <option value="{{ lecture[0] }}">{{ lecture[0] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Filter</button>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Conditional check if there are no flashcards -->
+{% if flashcards %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Course</th>
+      <th scope="col">Lecture</th>
+      <th scope="col">Front</th>
+      <th scope="col">Back</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for flashcard in flashcards %}
+    <tr>
+      <td>{{ flashcard[4] }}</td>
+      <td>{{ flashcard[5] }}</td>
+      <td>{{ flashcard[2] }}</td>
+      <td>{{ flashcard[3] }}</td>
+      <td>
+        <!-- Button for the modify action -->
+        <a href="/modify/{{ flashcard[0] }}" class="btn btn-primary">Modify</a>
+        <!-- Button for the delete action -->
+        <a href="/delete/{{ flashcard[0] }}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+ <!-- Message for when there are no flashcards -->
+{% else %}
+<div class="alert alert-info" role="alert">
+  No flashcards were found. Start creating some! <img src="{{ url_for('static', filename='diamonds.png') }}" alt="card" height="20">
+</div>
+{% endif %}
+
+<script>
+  // Function to show a temporary alert message (thanks to Copilot for the help with the javascript logic)
+  function showAlert(message, type) {
+    var alertPlaceholder = document.getElementById('alert-placeholder');
+    var wrapper = document.createElement('div');
+    wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+
+    alertPlaceholder.append(wrapper);
+
+    // Remove the alert after 3 seconds
+  setTimeout(function () {
+  wrapper.style.display = 'none';
+  }, 3000);
+}
+</script>
+
+<!-- Show alert when a flashcard has been modified or deleted-->
+{% if message %}
+<script>
+  showAlert('{{ message }}', '{{ message_type }}');
+</script>
+{% endif %}
+
+{% endblock %}

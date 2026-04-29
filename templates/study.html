@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Study
+{% endblock %}
+
+{% block main %}
+<div class="form-heading">
+    <h1>Study Flashcards</h1>
+</div>
+
+    {% if flashcards %}
+<div id="flashcard-container" class="container">
+        <!-- JavaScript to handle the flashcard display (thanks to Copilot for the help with the logic) -->
+    <script>
+        var flashcards = {{ flashcards | tojson }};
+        var currentCard = 0;
+
+        function showFlashcard() {
+            var card = flashcards[currentCard];
+            var container = document.getElementById('flashcard-container');
+            container.innerHTML = '<div id="flashcard-front">' +
+                                    '<p>' + card.front + '</p>' +
+                                  '</div>' +
+                                  '<div id="flashcard-back" style="display: none;">' +
+                                    '<p>' + card.back + '</p>' +
+                                  '</div>' +
+                                  '<button id="show-answer-btn" onclick="showBack()">Show Answer</button>';
+        }
+
+        function showBack() {
+            document.getElementById('flashcard-back').style.display = 'block';
+            document.getElementById('show-answer-btn').style.display = 'none';
+            // Check if the "Next" button already exists
+            if (!document.getElementById('next-btn')) {
+                var nextButton = '<button id="next-btn" onclick="nextFlashcard()">Next</button>';
+                document.getElementById('flashcard-container').insertAdjacentHTML('beforeend', nextButton);
+            }
+        }
+
+        function nextFlashcard() {
+            // Remove the "Next" button before showing the next flashcard
+            var nextButton = document.getElementById('next-btn');
+            if (nextButton) {
+                nextButton.remove();
+            }
+            currentCard++;
+            if (currentCard < flashcards.length) {
+                showFlashcard();
+            } else {
+                alert('You have completed studying this set of flashcards.');
+                window.location.href = "{{ url_for('study') }}";
+            }
+        }
+
+        // Starting call to display the first flashcard
+        showFlashcard();
+    </script>
+    {% else %}
+    <form method="POST" action="{{ url_for('study') }}">
+        <div class="form-group">
+            <label for="course">Course:</label>
+            <select class="form-control" id="course" name="course" required>
+                <option value="">Select Course</option>
+                {% for course in courses %}
+                <option value="{{ course[0] }}">{{ course[0] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="lecture">Lecture (optional):</label>
+            <select class="form-control" id="lecture" name="lecture">
+                <option value="">All</option>
+                {% for lecture in lectures %}
+                <option value="{{ lecture[0] }}">{{ lecture[0] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Start Studying</button>
+    </form>
+</div>
+    {% endif %}
+
+{% endblock %}

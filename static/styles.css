@@ -1,0 +1,170 @@
+/* Define color variables */
+:root {
+    --purple-main: #6f42c1; /* Main purple color */
+    --purple-light: #8a75d7; /* Lighter shade of purple for hover effects and some text */
+    --white: #ffffff; /* White color */
+}
+
+/* Apply a global font and background color. If Segoe UI is not available, sans-serif will take place */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--white);
+    color: var(--purple-main);
+}
+
+.header {
+    background-color: var(--purple-main);
+    color: var(--white);
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Logo styling (Flashpedia) */
+.logo {
+    font-size: 2em;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.logo:hover {
+    color: var(--purple-light);
+    text-decoration: none;
+}
+
+/* Header navigation links */
+.header-right a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.header-right a:hover {
+    color: var(--purple-light);
+}
+
+main.container {
+    margin-top: 30px;
+}
+
+/* Make form styling */
+#flashcard-form {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#flashcard-form h1 {
+    color: var(--purple-main);
+    margin-bottom: 20px;
+}
+
+#flashcard-form .form-control {
+    border: 1px solid var(--purple-main);
+}
+
+#flashcard-form .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+}
+
+#flashcard-form .btn-primary {
+    background-color: var(--purple-main);
+    border: none;
+}
+
+#flashcard-form .btn-primary:hover {
+    background-color: var(--purple-light);
+}
+
+/* Ensure that the form-heading is centered */
+.form-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form and table container styling */
+.container {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.table thead th {
+    background-color: var(--purple-main);
+    color: var(--white);
+}
+
+/* Button styling within the table (for the modify button in view.html) */
+.table .btn-primary {
+    background-color: var(--purple-main);
+    border: none;
+}
+
+.table .btn-primary:hover {
+    background-color: var(--purple-light);
+}
+
+.table .btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.table .btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Alert message for when no flashcards found in view.html */
+.alert-info {
+    background-color: var(--purple-light);
+    color: var(--white);
+    border: none;
+}
+
+.alert img {
+    vertical-align: bottom; /* Aligns the icon with the text */
+}
+
+/* Flashcard display styling (for study.html) */
+#flashcard-container {
+    background-color: var(--purple-light);
+    color: var(--white);
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#flashcard-front, #flashcard-back {
+    background-color: var(--white);
+    color: var(--purple-main);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Button styling for "Show Answer" and "Next" */
+#show-answer-btn, #next-btn {
+    background-color: var(--purple-main);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+#show-answer-btn:hover, #next-btn:hover {
+    background-color: var(--purple-light);
+}
+
+/* Form button styling */
+form .btn-primary {
+    background-color: var(--purple-main);
+    border: none;
+}
